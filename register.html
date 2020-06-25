@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+  <link rel="stylesheet" href="form.css" />
+</head>
+
+<body>
+  <script src=""></script>
+  <div id="login-box">
+        <div class="left">
+          <h1>signup</h1>
+         
+          <form action="\signup" method="POST">
+          <input type="text" name="username" id="username" placeholder="Username" required/>
+          <input type="password" name="password" id="password" placeholder="Password" required/>
+         
+          <select name="id" id="id">
+            <option value="c">Customer</option>
+            <option value="v">Vendor</option>
+          </select>
+          <input type="submit" name="signup_submit" value="Sign up" />
+        </form>
+        </div>
+</body>
+</html>

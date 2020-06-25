@@ -1,0 +1,197 @@
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Search</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-pink.min.css">
+    <link rel="stylesheet" href="styles.css">
+	<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  
+  <style>
+  .qacard {
+	height:250px;
+	}
+	
+.demo-card-square.mdl-card {
+  width: 500px;
+  height:500px;
+}
+  </style>
+  
+  </head>
+  <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+        </div>
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+          <h3>Search </h3>
+        </div>
+          <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent" id="add">
+            <i class="material-icons" role="presentation">add</i>
+            <span class="visuallyhidden">Add</span>
+          </button>
+      </header>
+      <main class="mdl-layout__content">
+        <div class="mdl-layout__tab-panel is-active" id="overview">
+        <div class="mdl-grid">
+	     <div class="mdl-cell mdl-cell--4-col"></div>
+			  <div class="mdl-cell mdl-cell--4-col">
+	           	<div class="demo-card-square mdl-card mdl-shadow--2dp">
+			  	<center>
+				 		<span class="mdl-chip">
+						    <span class="mdl-chip__text">Search destinations</span>
+						</span>
+						<hr>
+			
+            <div class="mdl-textfield mdl-js-textfield">
+              <div class="mdl-textfield mdl-js-textfield">
+                <input list="data1" class="mdl-textfield__input" type="text" id="city">
+                <label class="mdl-textfield__label" for="sample1">city</label>
+              <datalist id="data1">
+               <option value="Boston">
+              <option value="Brooklyn">
+              <option value="Burlingame">
+              <option value="Cambridge">
+              <option value="Culloden">
+              <option value="Las Vegas">
+              <option value="New York">
+              <option value="Palo Alto">
+              <option value="San Francisco">
+              <option value="Seattle">
+
+
+
+              </datalist>
+          </div>
+          
+            <div class="mdl-textfield mdl-js-textfield">
+              <div class="mdl-textfield mdl-js-textfield">
+                <input list="data" class="mdl-textfield__input" type="text" id="category">
+                <label class="mdl-textfield__label" for="sample1">Category</label>
+              <datalist id="data">
+              <option value="Arts and Entertainment">
+              <option value="Food">
+              <option value="College and Education">
+              <option value="Nightlife">
+              <option value="Parks and Outdoors">
+              <option value="Shops">
+              <option value="Travel">
+              <option value="Other">
+              </datalist>
+          </div>
+            
+
+            
+  
+             <br><br><br>
+					<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" onclick="search();">
+					  Search
+					</button>
+				  </center>
+				</div>
+				</div>
+			  <div class="mdl-cell mdl-cell--4-col"></div> 
+        	</div>
+          <div name="questionview" id="questionview"></div>
+         <!--  <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+              <div class="mdl-card__supporting-text">
+                <h6>Id</h6>
+                <h4>question</h4>
+              </div>
+              <div class="mdl-card__actions">
+                <a href="#" class="mdl-button">Read Answer</a>
+              </div>
+            </div>
+          </section>--> 
+        </div>
+      </main>
+    </div>
+    <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+  </body>
+  
+  <script>
+  
+  function search()
+  {
+    
+    var city=document.getElementById("city").value;
+    var category=document.getElementById("category").value;
+  window.swal({
+      title: "Searching...",
+      text: "Plese Wait...",
+      imageUrl: "https://i.imgur.com/TZcL7Cc.gif",
+      allowOutsideClick: false
+    });
+  
+  	$.ajax
+     ({
+         type: "GET",
+    	 dataType: "text",
+        data: "category="+category+"&&city="+city,
+         url: "/getFirends",
+     success:function(content)
+     {
+    	 
+    	// console.log(content);
+     	if(content != "")	 
+     		{
+				swal({
+     	    		  title: "Done!!!",
+     	    		  text: "Click Ok to view the result",
+     	    		  icon: "success",
+                 button: "OK !",
+                 
+     	    		}).then(function() {
+// Redirect the user
+
+      window.location.href='./output';
+
+console.log('The Ok Button was clicked.');
+});
+     		}else
+     			{
+     			 swal({
+     	    		  title: "Error!!!",
+     	    		  text: "Please contact Developer",
+     	    		  icon: "error",
+     	    		  button: "OK !",
+     	    		});
+     			}
+     	 
+     },
+     
+     });
+ }
+
+  </script>
+</html>
